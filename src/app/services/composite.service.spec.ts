@@ -34,4 +34,30 @@ describe('CompositeService', () => {
     })
 
   });
+
+
+  it("should throw an error the dog's owner is not found", () => {
+    let owners: Owner[] = [new Owner(2, "Carlitos")];
+    let dogs: Dog[] = [new Dog("sparky", 5, 1)];
+    let ownerService: OwnerService = {
+      getOwners(dogsIds : number[]): Owner[]{
+        return owners;
+      }
+    };
+
+    let dogsService: DogsService = {
+      getDogs(): Dog[]{
+        return dogs;
+      }
+    };
+
+    let compositeService: CompositeService = new CompositeService(dogsService, ownerService);
+
+    expect(() => compositeService.getDogs()).toThrowError();
+
+  });
+
+
+
+
 });
