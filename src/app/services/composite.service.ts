@@ -15,6 +15,11 @@ export class CompositeService {
 
     return dogs.map(dog => {
       let owner = owners.find(owner => owner.id == dog.ownerId);
+
+      if (!owner) {
+        throw new Error(`The owner with ID [${owner.id}] does not exist`);
+      }
+
       return new DogDetail(dog, owner);
     });
   }
