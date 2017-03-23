@@ -1,0 +1,37 @@
+import { TestBed, inject } from '@angular/core/testing';
+
+import { CompositeService } from './composite.service';
+import {OwnerService} from "./owner.service";
+import {Owner} from "../model/owner";
+import {DogsService} from "./dogs.service";
+import {Dog} from "../model/dog";
+
+describe('CompositeService', () => {
+  beforeEach(() => {
+
+  });
+
+  it('should return dogs with owners', () => {
+    let owners: Owner[] = [new Owner(1, "Roberto"), new Owner(2, "Carlitos")];
+    let dogs: Dog[] = [new Dog("sparky", 5, 1), new Dog("snoopy", 2, 2)];
+    let ownerService: OwnerService = {
+      getOwners(dogsIds : number[]): Owner[]{
+        return owners;
+      }
+    };
+
+    let dogsService: DogsService = {
+      getDogs(): Dog[]{
+        return dogs;
+      }
+    };
+
+    let compositeService: CompositeService = new CompositeService(dogsService, ownerService);
+
+    let actualDogs = compositeService.getDogs();
+    actualDogs.forEach(function(dogDetail){
+      expect(dogDetail.dog.ownerId).toBe(dogDetail.owner.id)
+    })
+
+  });
+});
