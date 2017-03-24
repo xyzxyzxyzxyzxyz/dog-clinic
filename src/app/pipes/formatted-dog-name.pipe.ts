@@ -8,6 +8,10 @@ export class FormattedDogNamePipe implements PipeTransform {
 
   transform(dogDetail: DogDetail, args?: any): any {
 
+    if (!dogDetail) {
+      return "";
+    }
+
     return `${dogDetail.dog.name} (${dogDetail.owner.surnames}, ${dogDetail.owner.name})`.toUpperCase();
   }
 
