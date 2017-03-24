@@ -9,9 +9,30 @@ export class CompositeService {
   constructor(private dogsService: DogsService, private ownerService: OwnerService) { }
 
   getDogs(): DogDetail[]{
-    let dogs = this.dogsService.getDogs();
+
+    let dogs = null;
+    try {
+      dogs = this.dogsService.getDogs();
+    }
+    catch(e) {
+      throw {
+        message: "DogsService failed",
+        cause: e
+      };
+    }
+
     let ownerIds = dogs.map(dog => dog.ownerId)
-    let owners = this.ownerService.getOwners(ownerIds);
+
+    let owners = null;
+    try {
+      owners = this.ownerService.getOwners(ownerIds);
+    }
+    catch(e) {
+      throw {
+        message: "OwnerService failed",
+        cause: e
+      };
+    }
 
     return dogs.map(dog => {
       let owner = owners.find(owner => owner.id == dog.ownerId);
