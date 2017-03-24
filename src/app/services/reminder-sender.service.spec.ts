@@ -13,4 +13,10 @@ describe('ReminderSenderService', () => {
 
     expect(() => reminderService.sendReminder(appointment)).not.toThrow();
   });
+
+  it('should throw an error when there is no appointment', () => {
+    let reminderService =  new ReminderSenderService();
+
+    expect(reminderService.sendReminder).toThrowError();
+  });
 });
