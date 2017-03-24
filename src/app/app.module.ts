@@ -5,10 +5,12 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import {DogsService} from "./services/dogs.service";
+import { FormattedDogNamePipe } from './pipes/formatted-dog-name.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FormattedDogNamePipe
   ],
   imports: [
     BrowserModule,

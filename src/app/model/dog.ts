@@ -15,4 +15,5 @@ export class Dog {
   get ownerId(): number{
     return this._ownerId;
   }
+
 }
