@@ -22,7 +22,8 @@ export class DogPanelComponent {
   }
 
   public sendReminderButtonOnClick(){
-    //this.sendReminderButtonClicked.emit(this.nextAppointment);
-    throw new Error();
+    if (this.dogDetail && this.nextAppointment) {
+      this.sendReminderButtonClicked.emit(this.nextAppointment);
+    }
   }
 }
