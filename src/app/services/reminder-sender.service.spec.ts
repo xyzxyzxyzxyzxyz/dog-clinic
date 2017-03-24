@@ -9,7 +9,7 @@ describe('ReminderSenderService', () => {
 
   it('should send the reminder', () => {
     let reminderService =  new ReminderSenderService();
-    let appointment = new Appointment();
+    let appointment = new Appointment(1,new Date());
 
     expect(() => reminderService.sendReminder(appointment)).not.toThrow();
   });

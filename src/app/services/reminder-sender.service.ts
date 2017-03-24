@@ -7,7 +7,7 @@ export class ReminderSenderService {
   constructor() { }
 
   sendReminder(appointment: Appointment) {
-    throw new Error();
+    console.debug(" Appointment sent for: "+ appointment.dogId + " in date: " +  appointment.date);
   }
 
 }
