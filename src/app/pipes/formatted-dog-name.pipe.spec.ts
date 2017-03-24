@@ -8,9 +8,17 @@ describe('FormattedDogNamePipe', () => {
     const pipe = new FormattedDogNamePipe();
     expect(pipe).toBeTruthy();
   });
+
   it('given a dogDetail object should return a string with this format [dogName] ([Surnames], [Name]) in uppercase', () => {
     const pipe = new FormattedDogNamePipe();
-    let dogDetail: DogDetail = new DogDetail(new Dog("Snoopy", 4, 1), new Owner(1, "Carlitos", "Brown"))
+    let dogDetail: DogDetail = new DogDetail(new Dog("Snoopy", 4, 1), new Owner(1, "Carlitos", "Brown"));
     expect(pipe.transform(dogDetail)).toBe("SNOOPY (BROWN, CARLITOS)");
   });
+
+  it('given a null dogDetail should return an empty string', () => {
+    const pipe = new FormattedDogNamePipe();
+    let dogDetail: DogDetail = null;
+    expect(pipe.transform(dogDetail)).toBe("");
+  });
+
 });
