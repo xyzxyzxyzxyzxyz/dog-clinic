@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {DogsService} from "./dogs.service";
 import {OwnerService} from "./owner.service";
 import {DogDetail} from "../model/dog-detail";
+import {ErrorObservable} from "rxjs/observable/ErrorObservable";
 
 @Injectable()
 export class CompositeService {
