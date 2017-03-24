@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {DogsService} from "./dogs.service";
 import {OwnerService} from "./owner.service";
 import {DogDetail} from "../model/dog-detail";
+import {ErrorObservable} from "rxjs/observable/ErrorObservable";
 
 @Injectable()
 export class CompositeService {
@@ -9,9 +10,30 @@ export class CompositeService {
   constructor(private dogsService: DogsService, private ownerService: OwnerService) { }
 
   getDogs(): DogDetail[]{
-    let dogs = this.dogsService.getDogs();
+
+    let dogs = null;
+    try {
+      dogs = this.dogsService.getDogs();
+    }
+    catch(e) {
+      throw {
+        message: "DogsService failed",
+        cause: e
+      };
+    }
+
     let ownerIds = dogs.map(dog => dog.ownerId)
-    let owners = this.ownerService.getOwners(ownerIds);
+
+    let owners = null;
+    try {
+      owners = this.ownerService.getOwners(ownerIds);
+    }
+    catch(e) {
+      throw {
+        message: "OwnerService failed",
+        cause: e
+      };
+    }
 
     return dogs.map(dog => {
       let owner = owners.find(owner => owner.id == dog.ownerId);
