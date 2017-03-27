@@ -11,13 +11,13 @@ export class DogListComponent{
   constructor() { }
 
   @Input()
-  dogList: DogDetail[];
+  dogDetailList: DogDetail[];
 
   @Output()
   dogDetailSelected : EventEmitter<DogDetail> = new EventEmitter();
 
   detailClicked(dogDetail : DogDetail) {
-    if(dogDetail != null && this.dogList != null && this.dogList.length != 0){
+    if(dogDetail != null && this.dogDetailList != null && this.dogDetailList.length != 0){
       this.dogDetailSelected.emit(dogDetail);
     }
   }
