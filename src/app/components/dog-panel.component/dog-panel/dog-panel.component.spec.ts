@@ -6,20 +6,20 @@ import {Owner} from "../../../model/owner";
 
 describe('DogPanelComponent', () => {
   let component: DogPanelComponent;
+  let emittedAppointment: Boolean;
 
   beforeEach(() => {
     component = new DogPanelComponent();
+    emittedAppointment = false;
+    component.sendReminderButtonClicked.subscribe((appointment:Appointment) =>
+    {
+      emittedAppointment = true;
+    });
   });
 
   it('No event is emitted if there is no dogDetail', () => {
     component.dogDetail = null;
     component.nextAppointment = new Appointment(1, new Date());
-
-    let emittedAppointment:Boolean = false;
-    component.sendReminderButtonClicked.subscribe((appointment:Appointment) =>
-      {
-        emittedAppointment = true;
-      });
 
     component.sendReminderButtonOnClick()
 
@@ -33,12 +33,6 @@ describe('DogPanelComponent', () => {
     );
     component.nextAppointment = null;
 
-    let emittedAppointment:Boolean = false;
-    component.sendReminderButtonClicked.subscribe((appointment:Appointment) =>
-    {
-      emittedAppointment = true;
-    });
-
     component.sendReminderButtonOnClick()
 
     expect(emittedAppointment).toBe(false);
@@ -50,12 +44,6 @@ describe('DogPanelComponent', () => {
       new Owner(1, "Charlie", "Brown")
     );
     component.nextAppointment = new Appointment(1, new Date());
-
-    let emittedAppointment:Boolean = false;
-    component.sendReminderButtonClicked.subscribe((appointment:Appointment) =>
-    {
-      emittedAppointment = true;
-    });
 
     component.sendReminderButtonOnClick()
 
