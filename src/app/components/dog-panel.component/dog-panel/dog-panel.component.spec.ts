@@ -44,5 +44,22 @@ describe('DogPanelComponent', () => {
     expect(emittedAppointment).toBe(false);
   });
 
+  it('The event is emitted when we have dogDetail and appointment', () => {
+    component.dogDetail = new DogDetail(
+      new Dog("Snoopy", 3, 1),
+      new Owner(1, "Charlie", "Brown")
+    );
+    component.nextAppointment = new Appointment(1, new Date());
+
+    let emittedAppointment:Boolean = false;
+    component.sendReminderButtonClicked.subscribe((appointment:Appointment) =>
+    {
+      emittedAppointment = true;
+    });
+
+    component.sendReminderButtonOnClick()
+
+    expect(emittedAppointment).toBe(true);
+  });
 
 });
