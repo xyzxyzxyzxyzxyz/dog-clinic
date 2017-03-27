@@ -6,13 +6,15 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import {DogsService} from "./services/dogs.service";
 import { FormattedDogNamePipe } from './pipes/formatted-dog-name.pipe';
-import { DogPanelComponent } from './components/dog-panel.component/dog-panel/dog-panel.component';
+import { DogPanelComponent } from './components/dog-panel/dog-panel.component';
+import { DogListComponent } from './components/dog-list/dog-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormattedDogNamePipe,
-    DogPanelComponent
+    DogPanelComponent,
+    DogListComponent
   ],
   imports: [
     BrowserModule,

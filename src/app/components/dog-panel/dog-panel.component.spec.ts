@@ -1,8 +1,8 @@
 import { DogPanelComponent } from './dog-panel.component';
-import {DogDetail} from "../../../model/dog-detail";
-import {Appointment} from "../../../model/appointment";
-import {Dog} from "../../../model/dog";
-import {Owner} from "../../../model/owner";
+import {DogDetail} from "../../model/dog-detail";
+import {Appointment} from "../../model/appointment";
+import {Dog} from "../../model/dog";
+import {Owner} from "../../model/owner";
 
 describe('DogPanelComponent', () => {
   let component: DogPanelComponent;
