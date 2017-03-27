@@ -27,6 +27,13 @@ describe('DogListComponent', () => {
     expect(isEmitted).toBe(false);
   });
 
+  it('should not emit dogDetailSelected event when dogDetail is null', () => {
+    component.dogList = [dogDetail];
+    component.detailClicked(null);
+
+    expect(isEmitted).toBe(false);
+  });
+
   it('should emit dogDetailSelected event when row is clicked', () => {
     component.dogList = [dogDetail];
     component.detailClicked(dogDetail);
