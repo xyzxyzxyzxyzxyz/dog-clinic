@@ -17,8 +17,9 @@ export class DogListComponent{
   dogDetailSelected : EventEmitter<DogDetail> = new EventEmitter();
 
   detailClicked(dogDetail : DogDetail) {
-    if(this.dogList!=null && this.dogList.length != 0){
+    if(this.dogList != null && this.dogList.length != 0){
       this.dogDetailSelected.emit(dogDetail);
     }
   }
+
 }
