@@ -1,2 +1,16 @@
-<app-dog-panel></app-dog-panel>
-<app-dog-list></app-dog-list>
+
+
+
+
+
+<app-dog-panel
+
+  (sendReminderButtonClicked)="sendReminderButtonHasBeenClicked($event.target.value)"
+></app-dog-panel>
+
+
+
+
+<app-dog-list
+  [dogDetailList]="dogList"
+></app-dog-list>

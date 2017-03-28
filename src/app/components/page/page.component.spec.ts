@@ -32,10 +32,9 @@ describe('PageComponent', () => {
   }));
 
   it('should retrieve the dog list on initialization time', () => {
-
     component.ngOnInit();
-
     expect(compositeServiceSpy).toHaveBeenCalledTimes(1);
-
+    expect(component.dogList).not.toBeNull()
   });
+
 });
