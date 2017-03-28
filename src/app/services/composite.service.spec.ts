@@ -1,4 +1,3 @@
-import { TestBed, inject } from '@angular/core/testing';
 
 import { CompositeService } from './composite.service';
 import {OwnerService} from "./owner.service";
@@ -12,7 +11,7 @@ describe('CompositeService', () => {
   });
 
   it('should return dogs with owners', () => {
-    let owners: Owner[] = [new Owner(1, "Roberto"), new Owner(2, "Carlitos")];
+    let owners: Owner[] = [new Owner(1, "Roberto","Moreno"), new Owner(2, "Carlitos", "Brown")];
     let dogs: Dog[] = [new Dog("sparky", 5, 1), new Dog("snoopy", 2, 2)];
     let ownerService: OwnerService = {
       getOwners(dogsIds : number[]): Owner[]{
@@ -37,7 +36,7 @@ describe('CompositeService', () => {
 
 
   it("should throw an error if the dog's owner is not found", () => {
-    let owners: Owner[] = [new Owner(2, "Carlitos")];
+    let owners: Owner[] = [new Owner(2, "Carlitos", "Brown")];
     let dogs: Dog[] = [new Dog("sparky", 5, 1)];
     let ownerService: OwnerService = {
       getOwners(dogsIds : number[]): Owner[]{
