@@ -8,13 +8,15 @@ import {DogsService} from "./services/dogs.service";
 import { FormattedDogNamePipe } from './pipes/formatted-dog-name.pipe';
 import { DogPanelComponent } from './components/dog-panel/dog-panel.component';
 import { DogListComponent } from './components/dog-list/dog-list.component';
+import { PageComponent } from './components/page/page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormattedDogNamePipe,
     DogPanelComponent,
-    DogListComponent
+    DogListComponent,
+    PageComponent
   ],
   imports: [
     BrowserModule,
